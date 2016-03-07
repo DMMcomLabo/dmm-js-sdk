@@ -1,6 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var dmm = require('../lib/dmm');
 dmm.request(require('httpplease'));
+dmm.set_env("browser");
 
 module.exports = dmm;
 
@@ -23,12 +24,17 @@ function dmmClient(config) {
 }
 
 var request;
+var run_env;
 
 module.exports = {
   Client: dmmClient,
 
   request: function(req) {
     request = req;
+  },
+
+  set_env: function(env) {
+    run_env = env;
   }
 }
 
@@ -77,11 +83,6 @@ dmmClient.prototype._get = function (path, params, callback) {
 
     request.get({
       url: baseURL + path + '?' + q.stringify(params),
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'PUT,DELETE,POST,GET,OPTIONS'
-      },
       json: true,
       followRedirect: false
     }, requestCallback(callback));
@@ -91,14 +92,24 @@ function requestCallback(callback) {
   if (!callback) return undefined;
   return function (err, response, body) {
     if (err) return callback(err);
-    if (response.statusCode >= 400) {
-      var errString = body.meta ? body.meta.msg : body.error;
-      return callback(new Error('API error: ' + response.statusCode + ' ' + errString));
-    }
-    if (body && body.response) {
-      return callback(null, body.response);
+    if (run_env == "browser") {
+      if (response && response.body) {
+        var res = JSON.parse(response.body);
+        var result = (res && res.result) ? res.result : res;
+        return callback(null, result);
+      } else {
+        return callback(new Error('API error (malformed API response): ' + response));
+      }
     } else {
-      return callback(new Error('API error (malformed API response): ' + body));
+      if (response.statusCode >= 400) {
+        var errString = body.meta ? body.meta.msg : body.error;
+        return callback(new Error('API error: ' + response.statusCode + ' ' + errString));
+      }
+      if (body && body.response) {
+        return callback(null, body.response);
+      } else {
+        return callback(new Error('API error (malformed API response): ' + body));
+      }
     }
   };
 }
@@ -540,12 +551,12 @@ module.exports={
   ],
   "name": "dmm.js",
   "description": "Official DMM Web API version.3 client for js",
-  "homepage": "https://github.com/DMMcomLabo/dmm.js",
+  "homepage": "https://github.com/DMMcomLabo/dmm-js-sdk",
   "version": "0.0.1",
   "repository": {
-    "url": "https://github.com/DMMcomLabo/dmm.js"
+    "url": "https://github.com/DMMcomLabo/dmm-js-sdk"
   },
-  "main": "./src/index",
+  "main": "index.js",
   "dependencies": {
     "httpplease": "*",
     "query-string": "^3.0.1",
@@ -557,6 +568,9 @@ module.exports={
     "jsl": "*",
     "mocha": "*",
     "should": "*"
+  },
+  "scripts": {
+    "test": "mocha -r should test/*_spec.js"
   },
   "license": "MIT"
 }
