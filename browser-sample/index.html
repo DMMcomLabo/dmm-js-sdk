@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="">
+<!--&#91;if lt IE 9&#93;>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<!&#91;endif&#93;-->
+</head>
+<body>
+<script src="../dist/dmm.js"></script>
+<script>
+var client =new dmm.Client({
+    api_id: "YOUR-API-ID",
+    affiliate_id: "YOUR-AFFILIATE-ID"
+});
+
+var options = {site: "DMM.R18"};
+client.product(options, function (err, data) {
+  console.log(err);
+  console.log(data);
+});
+</script>
+</body>
+</html>

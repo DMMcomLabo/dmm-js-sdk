@@ -1,0 +1,33 @@
+{
+  "author": "DMMcomLabo",
+  "contributors": [
+    {
+      "name": "Yusuke Komatsu",
+      "email": "komatsu-yusuke@dmm.com"
+    }
+  ],
+  "name": "dmm.js",
+  "description": "Official DMM Web API version.3 client for js",
+  "homepage": "https://github.com/DMMcomLabo/dmm-js-sdk",
+  "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/DMMcomLabo/dmm-js-sdk"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "httpplease": "*",
+    "query-string": "^3.0.1",
+    "request": "^2.69.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "jscoverage": "*",
+    "jsl": "*",
+    "mocha": "*",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "mocha -r should test/*_spec.js"
+  },
+  "license": "MIT"
+}
