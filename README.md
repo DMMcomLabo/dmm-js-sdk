@@ -3,8 +3,13 @@ DMM Web API version.3 クライアント
 
 ## インストール
 
-```
+``` bash
 npm install dmm.js
+```
+
+## ブラウザ用のjsファイル作成
+``` bash
+browserify browser/index.js -o dist/dmm.js
 ```
 
 ## 使用方法
@@ -161,4 +166,18 @@ client.series({
 }, function(err, data){
   console.log(data);
 });
+```
+
+# 開発者向け
+
+## テスト実行
+
+``` bash
+make test
+```
+
+## ドキュメンテーション作成
+
+``` bash
+make docs
 ```
