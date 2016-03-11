@@ -1,5 +1,5 @@
 {
-  "author": "DMMcomLabo",
+  "author": "usk",
   "contributors": [
     {
       "name": "Yusuke Komatsu",
@@ -27,6 +27,10 @@
     "mocha": "*",
     "should": "*"
   },
+  "keywords": [
+    "dmm",
+    "sdk"
+  ],
   "scripts": {
     "test": "mocha -r should test/*_spec.js",
     "build-docs": "documentation --github --format html --output docs/"
