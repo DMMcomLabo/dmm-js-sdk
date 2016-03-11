@@ -29,7 +29,7 @@
   },
   "scripts": {
     "test": "mocha -r should test/*_spec.js",
-    "docs": "documentation --github --format html --output docs/"
+    "build-docs": "documentation --github --format html --output docs/"
   },
   "license": "MIT"
 }
