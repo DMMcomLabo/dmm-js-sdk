@@ -10,6 +10,10 @@ window.dmm = dmm;
 var fs = require('fs');
 var q  = require('querystring');
 
+/**
+ * set credentials and create new client
+ * @param  {Object} config credential data
+ */
 function dmmClient(config) {
   if (!(this instanceof dmmClient)) {
     return new dmmClient(config);
@@ -19,8 +23,6 @@ function dmmClient(config) {
     api_id       : config.api_id,
     affiliate_id : config.affiliate_id
   } || {};
-
-  delete config;
 }
 
 var request;
@@ -42,50 +44,49 @@ var baseURL = 'https://api.dmm.com/affiliate/v3';
 var version = require('../package.json').version;
 
 dmmClient.prototype.actress = function (options, callback) {
-    if (isFunction(options)) { callback = options; options = {}; }
-    this._get('/ActressSearch', options, callback);
+  if (isFunction(options)) { callback = options; options = {}; }
+  this._get('/ActressSearch', options, callback);
 }
 
 dmmClient.prototype.author = function (options, callback) {
-    if (isFunction(options)) { callback = options; options = {}; }
-    this._get('/AuthorSearch', options, callback);
+  if (isFunction(options)) { callback = options; options = {}; }
+  this._get('/AuthorSearch', options, callback);
 }
 
-dmmClient.prototype.floor = function (options, callback) {
-    if (isFunction(options)) { callback = options; options = {}; }
-    this._get('/FloorList', options, callback);
+dmmClient.prototype.floor = function (callback) {
+  this._get('/FloorList', null, callback);
 }
 
 dmmClient.prototype.genre = function (options, callback) {
-    if (isFunction(options)) { callback = options; options = {}; }
-    this._get('/GenreSearch', options, callback);
+  if (isFunction(options)) { callback = options; options = {}; }
+  this._get('/GenreSearch', options, callback);
 }
 
 dmmClient.prototype.maker = function (options, callback) {
-    if (isFunction(options)) { callback = options; options = {}; }
-    this._get('/MakerSearch', options, callback);
+  if (isFunction(options)) { callback = options; options = {}; }
+  this._get('/MakerSearch', options, callback);
 }
 
 dmmClient.prototype.product = function (options, callback) {
-    if (isFunction(options)) { callback = options; options = {}; }
-    this._get('/ItemList', options, callback);
+  if (isFunction(options)) { callback = options; options = {}; }
+  this._get('/ItemList', options, callback);
 }
 
 dmmClient.prototype.series = function (options, callback) {
-    if (isFunction(options)) { callback = options; options = {}; }
-    this._get('/SeriesSearch', options, callback);
+  if (isFunction(options)) { callback = options; options = {}; }
+  this._get('/SeriesSearch', options, callback);
 }
 
 dmmClient.prototype._get = function (path, params, callback) {
-    params              = params || {};
-    params.api_id       = this.credentials.api_id;
-    params.affiliate_id = this.credentials.affiliate_id;
+  params              = params || {};
+  params.api_id       = this.credentials.api_id;
+  params.affiliate_id = this.credentials.affiliate_id;
 
-    request.get({
-      url: baseURL + path + '?' + q.stringify(params),
-      json: true,
-      followRedirect: false
-    }, requestCallback(callback));
+  request.get({
+    url: baseURL + path + '?' + q.stringify(params),
+    json: true,
+    followRedirect: false
+  }, requestCallback(callback));
 }
 
 function requestCallback(callback) {
@@ -564,13 +565,15 @@ module.exports={
   },
   "devDependencies": {
     "browserify": "^13.0.0",
+    "documentation": "3.0.0",
     "jscoverage": "*",
     "jsl": "*",
     "mocha": "*",
     "should": "*"
   },
   "scripts": {
-    "test": "mocha -r should test/*_spec.js"
+    "test": "mocha -r should test/*_spec.js",
+    "docs": "documentation --github --format html --output docs/"
   },
   "license": "MIT"
 }
