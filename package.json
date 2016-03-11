@@ -21,13 +21,15 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
+    "documentation": "3.0.0",
     "jscoverage": "*",
     "jsl": "*",
     "mocha": "*",
     "should": "*"
   },
   "scripts": {
-    "test": "mocha -r should test/*_spec.js"
+    "test": "mocha -r should test/*_spec.js",
+    "docs": "documentation --github --format html --output docs/"
   },
   "license": "MIT"
 }
