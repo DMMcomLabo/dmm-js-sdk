@@ -9,4 +9,7 @@ coverage:
 jslint:
 	./node_modules/jsl/bin/jsl -process lib/dmm.js -process index.js
 
+docs:
+	npm run-script build-docs
+
 .PHONY: test
