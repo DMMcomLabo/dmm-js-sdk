@@ -41,6 +41,7 @@ client.product({
   console.log(err);
   sys.print(sys.inspect(data)+"\n");
 });
+
 ```
 
 ## メソッド
@@ -80,6 +81,7 @@ client.author({
 }, function(err, data){
   console.log(data);
 });
+
 ```
 
 **フロアAPI**
@@ -91,6 +93,7 @@ client.floor(callback);
 client.floor(function(err, data){
   console.log(data);
 });
+
 ```
 
 **ジャンル検索API**
@@ -107,6 +110,7 @@ client.genre({
 }, function(err, data){
   console.log(data);
 });
+
 ```
 
 **メーカー検索API**
