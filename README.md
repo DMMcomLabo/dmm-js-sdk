@@ -11,7 +11,7 @@ npm install dmm.js
 
 ### ブラウザの場合
 
-```
+``` javascript
 var client = new dmm.Client({
     api_id: "YOUR-API-ID",
     affiliate_id: "YOUR-AFFILIATE-ID"
@@ -27,8 +27,8 @@ client.product({
 
 ### nodejsの場合
 
-```
-# client新規作成
+``` javascript
+// client新規作成
 var dmm = require('dmm.js');
 var client = new dmm.Client({
     api_id: "YOUR-API-ID",
@@ -47,10 +47,10 @@ client.product({
 ## メソッド
 **女優検索API**
 
-```
+``` javascript
 client.actress(options, callback);
 
-# 例
+// 例
 client.actress({
   initial: "あ",
   keyword: "あさみ",
@@ -69,10 +69,10 @@ client.actress({
 
 **作者検索API**
 
-```
+``` javascript
 client.author(options, callback);
 
-# 例
+// 例
 client.author({
   floor_id: 40,
   initial: "あ",
@@ -86,10 +86,10 @@ client.author({
 
 **フロアAPI**
 
-```
+``` javascript
 client.floor(callback);
 
-# 例
+// 例
 client.floor(function(err, data){
   console.log(data);
 });
@@ -98,10 +98,10 @@ client.floor(function(err, data){
 
 **ジャンル検索API**
 
-```
+``` javascript
 client.genre(options, callback);
 
-# 例
+// 例
 client.genre({
   floor_id: 40,
   initial: "あ",
@@ -115,10 +115,10 @@ client.genre({
 
 **メーカー検索API**
 
-```
+``` javascript
 client.maker(options, callback);
 
-# 例
+// 例
 client.maker({
   floor_id: 40,
   initial: "あ",
@@ -131,10 +131,10 @@ client.maker({
 
 **商品検索API**
 
-```
+``` javascript
 client.product(options, callback);
 
-# 例
+// 例
 client.product({
   site: "DMM.R18",
   service: "mono",
@@ -149,10 +149,10 @@ client.product({
 
 **シリーズ検索API**
 
-```
+``` javascript
 client.series(options, callback);
 
-# 例
+// 例
 client.series({
   floor_id: 40,
   initial: "あ",
