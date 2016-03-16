@@ -9,7 +9,7 @@
   "name": "dmm.js",
   "description": "Official DMM Web API version.3 client for js",
   "homepage": "https://github.com/DMMcomLabo/dmm-js-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "url": "https://github.com/DMMcomLabo/dmm-js-sdk"
   },
