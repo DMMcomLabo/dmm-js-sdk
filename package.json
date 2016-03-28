@@ -21,10 +21,13 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
+    "coveralls": "^2.11.9",
     "documentation": "3.0.0",
+    "istanbul": "^0.4.2",
     "jscoverage": "*",
     "jsl": "*",
     "mocha": "*",
+    "mocha-lcov-reporter": "^1.2.0",
     "should": "*"
   },
   "keywords": [
