@@ -7,7 +7,7 @@ coverage:
 	rm -rf lib-cov
 
 test-istanbul:
-	clean
+	make clean
 	./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --require should -R spec
 
 coveralls:
