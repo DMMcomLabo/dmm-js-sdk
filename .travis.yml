@@ -6,4 +6,6 @@ node_js:
   - '4'
   - '0.12'
 
-script: 'make coveralls'
+script: 'make test-istanbul'
+
+after_success: 'make coveralls; make clean'

@@ -6,11 +6,18 @@ coverage:
 	- DMM_COV=1 ./node_modules/mocha/bin/mocha -R html-cov > coverage.html
 	rm -rf lib-cov
 
+test-istanbul:
+	clean
+	./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --require should -R spec
+
 coveralls:
-	./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --require should -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+	cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 jslint:
 	./node_modules/jsl/bin/jsl -process lib/dmm.js -process index.js
+
+clean:
+	rm -rf ./coverage
 
 docs:
 	npm run-script build-docs
