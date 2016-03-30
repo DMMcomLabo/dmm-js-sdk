@@ -10,8 +10,8 @@ assert.sameRequest = function(original, other) {
 
 d.request(require('request'));
 
-var test_api_id = "UrwskPfkqQ0DuVry2gYL";
-var test_affiliate_id = "10278-996";
+var dummy_api_id = "UrwskPfkqQ0DuVry2gYL";
+var dummy_affiliate_id = "10278-996";
 
 module.exports = {
 
@@ -46,8 +46,8 @@ module.exports = {
     },
 
     client: new d.Client({
-        api_id: test_api_id,
-        affiliate_id: test_affiliate_id
+        api_id: dummy_api_id,
+        affiliate_id: dummy_affiliate_id
     })
 
 };
