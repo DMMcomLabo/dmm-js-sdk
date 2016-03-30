@@ -1,4 +1,11 @@
 # DMM SDK for js
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://github.com/DMMcomLabo/dmm-js-sdk/blob/master/LICENSE)
+[![Build Status](http://img.shields.io/travis/DMMcomLabo/dmm-js-sdk.svg?style=flat-square)](https://travis-ci.org/DMMcomLabo/dmm-js-sdk)
+[![Coverage Status](https://img.shields.io/coveralls/DMMcomLabo/dmm-js-sdk.svg?style=flat-square)](https://coveralls.io/github/DMMcomLabo/dmm-js-sdk?branch=master)
+
+[![NPM](https://nodei.co/npm-dl/dmm.js.png?months=9&height=3)](https://nodei.co/npm/dmm.js/)
+[![NPM](https://nodei.co/npm/dmm.js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/dmm.js/)
+
 DMM Web API version.3 クライアント
 
 ## インストール
